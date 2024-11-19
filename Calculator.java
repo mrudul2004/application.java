@@ -1,51 +1,30 @@
-import java.util.Scanner;
-
 public class Calculator {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        boolean keepRunning = true;
+        if (args.length < 3) {
+            System.out.println("Usage: java Calculator <num1> <operation> <num2>");
+            System.exit(1);
+        }
 
-        System.out.println("Welcome to the Calculator!");
-
-        while (keepRunning) {
-            System.out.println("\nChoose an operation:");
-            System.out.println("1. Addition (+)");
-            System.out.println("2. Subtraction (-)");
-            System.out.println("3. Multiplication (*)");
-            System.out.println("4. Division (/)");
-            System.out.println("5. Exit");
-            System.out.print("Enter your choice: ");
-
-            int choice = scanner.nextInt();
-
-            if (choice == 5) {
-                System.out.println("Exiting the calculator. Goodbye!");
-                keepRunning = false;
-                continue;
-            }
-
-            System.out.print("Enter the first number: ");
-            double num1 = scanner.nextDouble();
-            System.out.print("Enter the second number: ");
-            double num2 = scanner.nextDouble();
+        try {
+            double num1 = Double.parseDouble(args[0]);
+            char operation = args[1].charAt(0);
+            double num2 = Double.parseDouble(args[2]);
 
             double result;
-
-            switch (choice) {
-                case 1:
+            switch (operation) {
+                case '+':
                     result = num1 + num2;
                     System.out.println("Result: " + result);
                     break;
-                case 2:
+                case '-':
                     result = num1 - num2;
                     System.out.println("Result: " + result);
                     break;
-                case 3:
+                case '*':
                     result = num1 * num2;
                     System.out.println("Result: " + result);
                     break;
-                case 4:
+                case '/':
                     if (num2 != 0) {
                         result = num1 / num2;
                         System.out.println("Result: " + result);
@@ -54,10 +33,10 @@ public class Calculator {
                     }
                     break;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid operation. Use +, -, *, or /.");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid number format.");
         }
-
-        scanner.close();
     }
 }

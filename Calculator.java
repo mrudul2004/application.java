@@ -9,7 +9,7 @@ public class Calculator {
         System.out.println("Welcome to the Calculator!");
 
         while (keepRunning) {
-            System.out.println("\nChoose an operation:");1
+            System.out.println("\nChoose an operation:");
             System.out.println("1. Addition (+)");
             System.out.println("2. Subtraction (-)");
             System.out.println("3. Multiplication (*)");
